@@ -77,7 +77,7 @@ class LaptopResource extends Resource
     {
         return $table->columns([
             TextColumn::make('jenis')->searchable(),
-            TextColumn::make('nama_aset')->searchable(),
+            TextColumn::make('nama_aset')->searchable()->wrap(),
             // TextColumn::make('kode_aset')->searchable()->label('No. Asset'),
             TextColumn::make('processor')->searchable(),
             TextColumn::make('ram')->searchable(),

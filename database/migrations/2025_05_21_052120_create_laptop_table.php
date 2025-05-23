@@ -13,15 +13,16 @@ return new class extends Migration
     {
         Schema::create('laptops', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_aset');
-            $table->string('kode_aset')->unique();
-            $table->foreignId('kategori_id')->constrained('kategori');
-            $table->foreignId('cabang_id')->constrained('cabang');
-            $table->string('merek');
-            $table->string('processor');
-            $table->string('ram');
-            $table->string('storage');
-            $table->string('kondisi');
+            $table->string('jenis')->nullable();
+            $table->string('nama_aset')->nullable();
+            $table->string('kode_aset')->unique()->nullable();
+            $table->foreignId('kategori_id')->constrained('kategori')->nullable();
+            $table->foreignId('cabang_id')->constrained('cabang')->nullable();
+            $table->string('merek')->nullable();
+            $table->string('processor')->nullable();
+            $table->string('ram')->nullable();
+            $table->string('storage')->nullable();
+            $table->string('kondisi')->nullable();
             $table->timestamps();
             $table->softDeletes(); // ini wajib karena pakai --soft-deletes
         });

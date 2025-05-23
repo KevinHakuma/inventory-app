@@ -14,6 +14,7 @@ class LaptopModel extends Model
     protected $table = 'laptops';
 
     protected $fillable = [
+        'jenis',
         'nama_aset',
         'kode_aset',
         'kategori_id',
