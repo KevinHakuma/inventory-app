@@ -3,18 +3,13 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\LaptopResource\Pages;
-use App\Filament\Resources\LaptopResource\RelationManagers;
 use App\Models\CabangModel;
-use App\Models\Laptop;
 use App\Models\LaptopModel;
-// use Filament\Actions\Action;
-use Filament\Forms;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Support\Enums\ActionSize;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\TrashedFilter;
@@ -28,10 +23,9 @@ use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\ForceDeleteAction;
 use Filament\Tables\Actions\RestoreAction;
 use Filament\Tables\Actions\Action;
-
-use App\Models\PerpindahanAsetModel;
 use Filament\Notifications\Notification;
 use Filament\Tables\Columns\SelectColumn;
+use Filament\Tables\Filters\SelectFilter;
 
 class LaptopResource extends Resource
 {
@@ -96,6 +90,9 @@ class LaptopResource extends Resource
 
             ->filters([
                 TrashedFilter::make(), // Untuk soft deletes
+                SelectFilter::make('cabang_id')
+                    ->label('Cabang')
+                    ->options(CabangModel::all()->pluck('nama_cabang', 'id'))
             ])
             ->actions([
                 ActionGroup::make([
@@ -172,9 +169,6 @@ class LaptopResource extends Resource
                     ->icon('heroicon-m-ellipsis-vertical')
                     ->color('primary')
                     ->size(\Filament\Support\Enums\ActionSize::Small),
-
-
-
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),

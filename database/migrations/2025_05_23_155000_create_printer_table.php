@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('laptops', function (Blueprint $table) {
+        Schema::create('printer', function (Blueprint $table) {
             $table->id();
             $table->string('jenis')->nullable();
             $table->string('nama_aset')->nullable();
@@ -19,10 +19,6 @@ return new class extends Migration
             $table->foreignId('kategori_id')->constrained('kategori')->nullable();
             $table->foreignId('cabang_id')->constrained('cabang')->nullable();
             $table->string('merek')->nullable();
-            $table->string('processor')->nullable();
-            $table->string('ram')->nullable();
-            $table->string('storage')->nullable();
-            $table->string('user')->nullable();
             $table->string('kondisi')->nullable();
             $table->timestamps();
             $table->softDeletes(); // ini wajib karena pakai --soft-deletes
@@ -34,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('laptop');
+        Schema::dropIfExists('printer');
     }
 };
