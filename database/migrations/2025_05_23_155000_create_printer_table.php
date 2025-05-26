@@ -16,9 +16,9 @@ return new class extends Migration
             $table->string('jenis')->nullable();
             $table->string('nama_aset')->nullable();
             $table->string('kode_aset')->unique()->nullable();
+            $table->string('serial_number')->nullable();
             $table->foreignId('kategori_id')->constrained('kategori')->nullable();
             $table->foreignId('cabang_id')->constrained('cabang')->nullable();
-            $table->string('merek')->nullable();
             $table->string('kondisi')->nullable();
             $table->timestamps();
             $table->softDeletes(); // ini wajib karena pakai --soft-deletes

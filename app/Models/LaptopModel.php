@@ -17,6 +17,7 @@ class LaptopModel extends Model
         'jenis',
         'nama_aset',
         'kode_aset',
+        'serial_number',
         'kategori_id',
         'cabang_id',
         'user',

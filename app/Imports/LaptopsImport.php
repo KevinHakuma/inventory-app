@@ -29,6 +29,7 @@ class LaptopsImport implements ToModel, WithHeadingRow
             'jenis'       => $row['jenis'],
             'nama_aset'   => $row['nama_aset'],
             'kode_aset'   => $row['kode_aset'],
+            'serial_number'   => $row['serial_number'],
             'kategori_id' => $row['kategori_id'],
             'cabang_id'   => $cabangId,
             'merek'       => $row['merek'],

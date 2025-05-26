@@ -26,6 +26,8 @@ use Filament\Tables\Actions\Action;
 use Filament\Notifications\Notification;
 use Filament\Tables\Columns\SelectColumn;
 use Filament\Tables\Filters\SelectFilter;
+use pxlrbt\FilamentExcel\Actions\Tables\ExportBulkAction;
+
 
 class LaptopResource extends Resource
 {
@@ -47,6 +49,7 @@ class LaptopResource extends Resource
             TextInput::make('jenis')->required(),
             TextInput::make('nama_aset')->required(),
             TextInput::make('kode_aset'),
+            TextInput::make('serial_number'),
             Select::make('kategori_id')
                 ->relationship('kategori', 'nama_kategori')
                 ->required(),
@@ -174,6 +177,14 @@ class LaptopResource extends Resource
                 Tables\Actions\DeleteBulkAction::make(),
                 Tables\Actions\ForceDeleteBulkAction::make(),
                 Tables\Actions\RestoreBulkAction::make(),
+                ExportBulkAction::make('export')
+                ->label('Export to Excel')
+                ->exports([
+                    \pxlrbt\FilamentExcel\Exports\ExcelExport::make()
+                        ->fromTable()
+                        ->withFilename('laptop-export')
+                        ->withWriterType(\Maatwebsite\Excel\Excel::XLSX)
+                ]),
             ]);
     }
 
